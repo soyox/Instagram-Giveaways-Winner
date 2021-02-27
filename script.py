@@ -8,24 +8,6 @@ from functools import partial
 from configparser import ConfigParser
 
 
-
-ASCII = '''
-\n\n
-\t\t\t .----------------.  .----------------.  .----------------.
-\t\t\t| .--------------. || .--------------. || .--------------. |
-\t\t\t| |  ____  ____  | || |   _    _     | || |    ______    | |
-\t\t\t| | |_   ||   _| | || |  | |  | |    | || |   / ____ `.  | |
-\t\t\t| |   | |__| |   | || |  | |__| |_   | || |   `'  __) |  | |
-\t\t\t| |   |  __  |   | || |  |____   _|  | || |   _  |__ '.  | |
-\t\t\t| |  _| |  | |_  | || |      _| |_   | || |  | \____) |  | |
-\t\t\t| | |____||____| | || |     |_____|  | || |   \______.'  | |
-\t\t\t| |              | || |              | || |              | |
-\t\t\t| '--------------' || '--------------' || '--------------' |
-\t\t\t '----------------'  '----------------'  '----------------'
-\n\n\n\t\t\t\t\t\t\t\t\tCreated by: Fytex\n\n\n
-'''
-
-
 parser = ConfigParser()
 parser.read('config.ini', encoding='utf8')
 
@@ -81,7 +63,7 @@ if not save_only and not low <= weight <= high:
     exit('Weight must be a number between Min and Max')
 
 
-print(ASCII)
+
 
 CONNECTIONS_TYPE = "followers" if from_followers else "followings"
 
@@ -168,6 +150,7 @@ if not save_only:
     print('Let\'s win this giveaway together! Spamming...')
 
     get_interval = partial(triangular, low, high, weight)
+    print(f'VAN: {bot.num_comments} comments!')
 
     try:
         bot.comment_post(post_link, expr, get_interval) # type: ignore  # post_link is 'str' because it exits otherwise. However appears as 'Optional[str]'
